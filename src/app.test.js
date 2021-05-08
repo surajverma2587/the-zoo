@@ -28,22 +28,6 @@ describe("app", () => {
     expect(consoleSpy).toHaveBeenCalledWith(expected);
   });
 
-  test("should pass the questions to inquirer prompt", async () => {
-    mockAnswers();
-
-    const expected = [
-      {
-        type: "input",
-        message: "What is the name of the zoo?",
-        name: "zooName",
-      },
-    ];
-
-    await app();
-
-    expect(inquirerSpy).toHaveBeenCalledWith(expected);
-  });
-
   test("should call generateHTML with the answers", async () => {
     const mockData = {
       zooName: "foo bar",

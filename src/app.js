@@ -1,7 +1,7 @@
-const inquirer = require("inquirer");
-
 const generateHTML = require("./generateHTML");
 const writeToFile = require("./writeToFile");
+const collectAllAnimals = require("./collectAllAnimals");
+const getAnswers = require("./getAnswers");
 
 const app = async () => {
   console.log("App Started...");
@@ -14,11 +14,17 @@ const app = async () => {
     },
   ];
 
-  const answers = await inquirer.prompt(questions);
+  const answers = await getAnswers(questions);
 
-  const html = generateHTML(answers);
+  console.log(answers);
 
-  writeToFile(html);
+  const animals = await collectAllAnimals();
+
+  console.log(animals);
+
+  // const html = generateHTML(answers);
+
+  // writeToFile(html);
 };
 
 module.exports = app;
