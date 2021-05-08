@@ -51,12 +51,12 @@ const collectAllAnimals = async () => {
       inProgress = false;
     } else {
       if (answers.animalType === "terrestrial") {
-        const terrestrialAnimal = createTerrestrialAnimal();
+        const terrestrialAnimal = await createTerrestrialAnimal();
         animals.push(terrestrialAnimal);
       }
 
       if (answers.animalType === "aquatic") {
-        const aquaticAnimal = createAquaticAnimal();
+        const aquaticAnimal = await createAquaticAnimal();
         animals.push(aquaticAnimal);
       }
 
