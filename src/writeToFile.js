@@ -1,5 +1,11 @@
+const fs = require("fs");
+
 const writeToFile = (html) => {
-  console.log(html);
+  try {
+    fs.writeFileSync("animals.html", html);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 module.exports = writeToFile;

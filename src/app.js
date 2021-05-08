@@ -14,17 +14,13 @@ const app = async () => {
     },
   ];
 
-  const answers = await getAnswers(questions);
-
-  console.log(answers);
+  const { zooName } = await getAnswers(questions);
 
   const animals = await collectAllAnimals();
 
-  console.log(animals);
+  const html = generateHTML({ zooName, animals });
 
-  // const html = generateHTML(answers);
-
-  // writeToFile(html);
+  writeToFile(html);
 };
 
 module.exports = app;

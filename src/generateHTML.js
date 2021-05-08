@@ -1,4 +1,34 @@
-const generateHTML = (answers) => {
+const Aquatic = require("./animals/Aquatic");
+const Terrestrial = require("./animals/Terrestrial");
+
+const generateTerrestrialCard = (animal) => {
+  return `<div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">${animal.species}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Terrestrial</h6>
+      <p class="card-text">Life Expectancy: ${animal.lifeExpectancy}</p>
+      <p class="card-text">Continent: ${animal.continent}</p>
+      <p class="card-text">Size: ${animal.size}</p>
+      <p class="card-text">Is Mammal: ${animal.isMammal}</p>
+      <p class="card-text">Limbs: ${animal.limbs}</p>
+    </div>
+  </div>`;
+};
+
+const generateHTML = ({ zooName, animals }) => {
+  const generateCard = (animal) => {
+    // if (animal instanceof Aquatic) {
+    //   return "Aquatic";
+    // }
+    if (animal instanceof Terrestrial) {
+      return generateTerrestrialCard(animal);
+    }
+  };
+
+  const cards = animals.map(generateCard);
+
+  console.log(cards);
+
   return `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -16,8 +46,11 @@ const generateHTML = (answers) => {
       <body>
         <div>
           <header class="text-center p-4 bg-warning">
-            <h1>${answers.zooName}</h1>
+            <h1>${zooName}</h1>
           </header>
+          <div class="d-flex justify-content-around flex-wrap">
+            ${cards.join("")}
+          </div>
         </div>
       </body>
     </html>
